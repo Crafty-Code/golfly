@@ -28,4 +28,6 @@ data = pandas.read_csv(
 
 print("Data Imported")
 print("# of records: " + str(data.size))
-print(data.head())
+
+listOfStats = data.groupby(['statistic'])['variable'].unique() 
+print(listOfStats)
