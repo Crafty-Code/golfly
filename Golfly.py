@@ -30,4 +30,4 @@ print("Data Imported")
 print("# of records: " + str(data.size))
 
 listOfStats = data.groupby(['statistic'])['variable'].unique() 
-print(listOfStats)
+listOfStats.to_json("./Data/statistics.json")
