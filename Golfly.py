@@ -32,9 +32,13 @@ listOfWinnings['value'] = pandas.to_numeric(listOfWinnings.value, errors='coerce
 print("Cleaned up values")
 
 # sum all of each players winnings
-output = listOfWinnings.groupby(['player_name'])[['value']].sum()
-
+highestEarningOutput = listOfWinnings.groupby(['player_name'])[['value']].sum()
 # sort in descending order
-output = output.sort_values(by=['value'], ascending=False)
-print(output)
-output.to_json("./Data/output.json")
+highestEarningOutput = highestEarningOutput.sort_values(by=['value'], ascending=False)
+highestEarningOutput.to_json("./Data/highestEarningOutput.json")
+print("Highest Earners calculated")
+
+highestAvgEarningOutput = listOfWinnings.groupby(['player_name'])[['value']].mean()
+highestAvgEarningOutput = highestAvgEarningOutput.sort_values(by=['value'], ascending=False)
+highestAvgEarningOutput.to_json("./Data/highestAvgEarningOutput.json")
+print("Best Average Earners calculated")
